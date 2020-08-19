@@ -11,16 +11,21 @@
 
 <stackLayout>
   <label class="header">{header}</label>
-  <label class="info" horizontalAlignment="center" verticalAlignment="center" textWrap="true">
-    <formattedString class="alive">
-      <span text= "{life} " />
-      {#if alive}
+  {#if alive}
+    <label class="info" horizontalAlignment="center" verticalAlignment="center" textWrap="true">
+      <formattedString>
+        <span text= "{life} " />
         <span class="fas alive" text="&#xf004;" />
-      {:else}
+      </formattedString>
+    </label>
+  {:else}
+    <label class="info" horizontalAlignment="center" verticalAlignment="center" textWrap="true">
+      <formattedString>
+        <span text= "{life} " />
         <span class="fas dead" text="&#xf54c;" />
-      {/if}
-    </formattedString>
-  </label>
+      </formattedString>
+    </label>
+  {/if}
   <flexboxLayout>
     <button on:tap={() => changeLife(-5)}>-5</button>
     <button on:tap={() => changeLife(-1)}>-1</button>
@@ -32,8 +37,13 @@
 
 <style>
   .info .fas {
-    color: #FF8888;
     margin: 1em;
+  }
+  .dead {
+    color: #770077;
+  }
+  .alive {
+    color: #FF8888;
   }
   .header {
     text-align: center;
@@ -43,7 +53,7 @@
     font-size: 20;
   }
   button {
-    background-color: blue;
+    background-color: #1188CC;
     margin: 0;
   }
   .reset {
